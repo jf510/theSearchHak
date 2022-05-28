@@ -1,26 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Search.css";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router";
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
 import SatelliteAltOutlinedIcon from "@mui/icons-material/SatelliteAltOutlined";
 
-function Search() {
+function Search({ hideButtons = false }) {
+  let navigate = useNavigate();
+  const [input, setInput] = useState("");
+
+  const search = (e) => {
+    e.preventDefault();
+    console.log(input);
+    navigate("/searchResults");
+  };
+
   return (
-    <div className="search">
+    <form className="search">
       <div className="search__input">
         <SatelliteAltOutlinedIcon className="search__inputIcon" />
-        <input />
+        <input value={input} onChange={(e) => setInput(e.target.value)} />
         <MicOutlinedIcon />
       </div>
-      <div className="search__buttons">
-        <Button className="button" variant="outlined">
-          Search
-        </Button>
-        <Button className="button" variant="outlined">
-          I'm Feeling Lucky
-        </Button>
-      </div>
-    </div>
+
+      {!hideButtons ? (
+        <div className="search__buttons">
+          <Button
+            onClick={search}
+            type="submit"
+            className="button"
+            variant="outlined"
+          >
+            Search
+          </Button>
+          <Button className="button" variant="outlined">
+            I'm Feeling Lucky
+          </Button>
+        </div>
+      ) : (
+        <div className="search__buttonsHidden">
+          <Button
+            onClick={search}
+            type="submit"
+            className="button"
+            variant="outlined"
+          >
+            Search
+          </Button>
+          <Button className="button" variant="outlined">
+            I'm Feeling Lucky
+          </Button>
+        </div>
+      )}
+    </form>
   );
 }
 
