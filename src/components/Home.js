@@ -19,7 +19,10 @@ function Home() {
           <Avatar />
         </div>
       </div>
-      <div className="home__body"></div>
+          <div className="home__body">
+              <img src="https://us.123rf.com/450wm/bazzier/bazzier2001/bazzier200100002/137056908-black-and-white-of-cobra-snake.jpg?ver=6" />
+              <input type="text" />
+      </div>
     </div>
   );
 }
