@@ -4,14 +4,23 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
 import SatelliteAltOutlinedIcon from "@mui/icons-material/SatelliteAltOutlined";
+import { useStateValue } from "../StateProvider";
+import { actionTypes } from "../reducer";
 
 function Search({ hideButtons = false }) {
   let navigate = useNavigate();
+  const [{}, dispatch] = useStateValue();
   const [input, setInput] = useState("");
 
   const search = (e) => {
     e.preventDefault();
     console.log(input);
+
+    dispatch({
+        type: actionTypes.SET_SEARCH_TERM,
+        term: input
+    });
+
     navigate("/searchResults");
   };
 
