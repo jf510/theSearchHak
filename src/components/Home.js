@@ -22,10 +22,10 @@ function Home() {
       </div>
       <div className="home__body">
         <img src="https://us.123rf.com/450wm/bazzier/bazzier2001/bazzier200100002/137056908-black-and-white-of-cobra-snake.jpg?ver=6" />
-      </div>
-      <div className="home__inputContainer">
-        {/** Search Component */}
-        <Search />
+
+        <div className="home__inputContainer">
+          <Search />
+        </div>
       </div>
     </div>
   );
